@@ -15,7 +15,7 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->comment('User ID For Relation');
+            $table->unsignedBigInteger('user_id')->nullable()->comment('User ID For Relation');
             $table->string('name', 255);
             $table->boolean('is_activate')->default(1);
             $table->timestamps();

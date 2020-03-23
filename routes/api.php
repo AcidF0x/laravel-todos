@@ -15,15 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Api')->group(function() {
-    Route::namespace('V1')->prefix('v1')->group(function() {
-        Route::middleware('auth:api')->prefix('todos')->group(function (){
-            Route::get('/', 'TodoController@getList');
-            Route::post('/', 'TodoController@register');
-            Route::delete('/{id}', 'TodoController@delete');
-            Route::put('/{id}/toggle', 'TodoController@toggle');
+    Route::namespace('V1')->prefix('v1')->middleware('auth:api')->group(function() {
+        Route::prefix('todos')->group(function (){
+            Route::get('/', 'TodoController@getList')->name('api-todo-get');
+            Route::post('/', 'TodoController@register')->name('api-todo-register');
+            Route::delete('/{id}', 'TodoController@delete')->name('api-todo-delete');
+            Route::put('/{id}/toggle', 'TodoController@toggle')->name('api-todo-toggle');
         });
-
-        Route::post('/login', 'AuthController@login');
     });
 });
 

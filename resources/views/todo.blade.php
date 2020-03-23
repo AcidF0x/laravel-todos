@@ -13,6 +13,10 @@
                     <div class="col-2 text-right">
                         <a href="{{ route('web-logout') }}" class="btn btn-sm btn-danger">Logout</a>
                     </div>
+                    <div class="col-12">
+                        <small>API TOKEN</small>
+                        <small>{{ $token }}</small>
+                    </div>
                 </div>
                 <form id="form" action="{{ route('web-register-todo') }}" method="post">
                     @csrf
